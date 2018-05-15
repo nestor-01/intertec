@@ -17,13 +17,15 @@ public class RestrictedWordServiceImpl implements RestrictedWordService {
     @Autowired
     private RestrictedWordRepository restrictedWordRepository;
 
-    public RestrictedWord saveRestrictedWord(String word) {
-        RestrictedWord restrictedWord = new RestrictedWord();
-        restrictedWord.setWord(word);
-        return restrictedWordRepository.save(restrictedWord);
-    }
-
     public List<RestrictedWord> getAllRestrictedWords() {
         return restrictedWordRepository.findAll();
+    }
+
+    public RestrictedWord save(RestrictedWord restrictedWord) {
+        RestrictedWord restrictedWord1 = restrictedWordRepository.findRestrictedWordByWord(restrictedWord.getWord());
+        if (restrictedWord1 == null){
+            return restrictedWordRepository.save(restrictedWord);
+        }
+        return null;
     }
 }

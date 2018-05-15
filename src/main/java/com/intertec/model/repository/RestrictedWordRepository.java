@@ -7,4 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Created by Userpc on 13/05/2018.
  */
 public interface RestrictedWordRepository extends JpaRepository<RestrictedWord, Integer> {
+
+    public RestrictedWord findRestrictedWordByWord(String name);
+
 }

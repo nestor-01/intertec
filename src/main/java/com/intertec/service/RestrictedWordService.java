@@ -9,7 +9,8 @@ import java.util.List;
  */
 public interface RestrictedWordService {
 
-    public RestrictedWord saveRestrictedWord(String restrictedWord);
-
     public List<RestrictedWord> getAllRestrictedWords();
+
+    public RestrictedWord save(RestrictedWord restrictedWord);
+
 }

@@ -11,9 +11,9 @@ import java.util.List;
  * Created by Userpc on 13/05/2018.
  */
 public interface UserRepository extends JpaRepository<User, Integer>{
-    public User findUserByUserName(String userName);
 
-    @Query("SELECT u FROM User u WHERE u.userName = '%:name%'")
-    public List<User> findUsersByName(@Param("name") String name);
+    User findUserByUserName(String userName);
 
+    @Query("SELECT u FROM User u WHERE u.userName like ?1")
+    List<User> findUsersByName(String name);
 }

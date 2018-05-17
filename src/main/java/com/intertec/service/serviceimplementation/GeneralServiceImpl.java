@@ -43,7 +43,7 @@ public class GeneralServiceImpl implements GeneralService{
         if (user != null) {
             List possibleUserNames = new ArrayList<String>();
             List<User> usersSimilarName = userService.findUsersByName(userName);
-            int count = 0;
+            int count = 1;
             String similarName = userName;
             while (possibleUserNames.size() < 14) {
                 String newName = similarName.concat(String.valueOf(count));
@@ -52,10 +52,12 @@ public class GeneralServiceImpl implements GeneralService{
                 }
                 if ((count%10) == 0) {
                     Random random = new Random();
-                    similarName.concat(String.valueOf(random.nextInt()));
+                    similarName = similarName.concat(String.valueOf(random.nextInt()));
                 }
+                count++;
             }
             result = new Result(false, possibleUserNames);
+
         } else {
             result = new Result(true, null);
         }

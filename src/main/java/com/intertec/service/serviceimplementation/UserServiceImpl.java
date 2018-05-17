@@ -14,6 +14,8 @@ import java.util.*;
 @Service
 public class UserServiceImpl implements UserService{
 
+    private final static String PERCENTAGE = "%";
+
     @Autowired
     private UserRepository userRepository;
 
@@ -22,7 +24,7 @@ public class UserServiceImpl implements UserService{
     }
 
     public List<User> findUsersByName(String userName) {
-        return userRepository.findUsersByName(userName);
+        return userRepository.findUsersByName(PERCENTAGE.concat(userName).concat(PERCENTAGE));
     }
 
     public User saveUser(String userName) {
